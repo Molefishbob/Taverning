@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 3062895f87d5c0f4c9dd1b286e00dd19
+=======
+guid: d3441be91905e974890136e2b018e888
+>>>>>>> master
 =======
 guid: bc50299e5076d254b922394e0be4dfbf
 >>>>>>> master
@@ -19,6 +23,9 @@ TrueTypeFontImporter:
   fallbackFontReferences: []
 =======
   fallbackFontReferences:
+<<<<<<< HEAD
+  - {fileID: 12800000, guid: 02f57185f6eedf842b00d3e817b17d25, type: 3}
+=======
   - {fileID: 12800000, guid: bb91f0c9f07b3734b9221b7a4ad98e78, type: 3}
 >>>>>>> master
   customCharacters: 
