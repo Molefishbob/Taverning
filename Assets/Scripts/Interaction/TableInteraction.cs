@@ -6,6 +6,7 @@ public class TableInteraction : GenericInteraction
 {
     public enum State
     {
+        Error,
         Empty,
         Full,
         Fighting
@@ -15,18 +16,31 @@ public class TableInteraction : GenericInteraction
     public int _chairCount;
 
     // Start is called before the first frame update
-     void Start()
+     public override void Start()
     {
-        
+        base.Start();
     }
 
-    protected override void Interaction()
+    // Update is called once per frame
+    void Update()
     {
-        throw new System.NotImplementedException();
+        if (_actionOnGoing && _currentState == State.Fighting)
+        {
+            if (_timer.IsCompleted)
+            {
+                _currentState = State.Empty;
+                _actionOnGoing = false;
+            }
+        }
+        if (_currentState == State.Error)
+        {
+            _currentState = State.Empty;
+        }
     }
 
-    protected override void ChangeState(int state)
+    protected override void InteractionStart()
     {
-        throw new System.NotImplementedException();
+        ResetTimer();
+        _actionOnGoing = true;
     }
 }
