@@ -18,7 +18,10 @@ public abstract class GenericInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (_actionOnGoing)
+        {
+            
+        }
     }
 
     protected abstract void Interaction();
