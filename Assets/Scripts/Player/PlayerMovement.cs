@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Tooltip("UP,DOWN,LEFT,RIGHT")]
     public Vector3[] _Rays;
-    [SerializeField, Tooltip("UP,DOWN,LEFT,RIGHT")]
-    private bool[] _CollidedSides = new bool[4];
+    [Tooltip("UP,DOWN,LEFT,RIGHT")]
+    public bool[] _CollidedSides = new bool[4];
 
     // Start is called before the first frame update
     void Start()
@@ -82,25 +82,26 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        if(_vInputs != Vector2.zero)
+        Vector2 tempMovement = _vInputs;
+        if (_CollidedSides[0] && _vInputs.y > 0)
+        {
+            _vInputs.y = 0;
+        }
+        if (_CollidedSides[1] && _vInputs.y < 0)
+        {
+            _vInputs.y = 0;
+        }
+        if (_CollidedSides[2] && _vInputs.x < 0)
+        {
+            _vInputs.x = 0;
+        }
+        if (_CollidedSides[3] && _vInputs.x > 0)
+        {
+            _vInputs.x = 0;
+        }
+        if (_vInputs != Vector2.zero)
         {
             transform.Translate(_vInputs * Time.deltaTime * _fSpeed);
-        }
-        if (_CollidedSides[0])
-        {
-            transform.Translate(-transform.up * Time.deltaTime * _fSpeed);
-        }
-        if (_CollidedSides[1])
-        {
-            transform.Translate(transform.up * Time.deltaTime * _fSpeed);
-        }
-        if (_CollidedSides[2])
-        {
-            transform.Translate(transform.right * Time.deltaTime * _fSpeed);
-        }
-        if (_CollidedSides[3])
-        {
-            transform.Translate(-transform.right * Time.deltaTime * _fSpeed);
         }
     }
 
