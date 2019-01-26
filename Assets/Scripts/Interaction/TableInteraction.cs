@@ -74,4 +74,17 @@ public class TableInteraction : GenericInteraction
         }
         return null;
     }
+
+    public void ReleaseTheChair(Vector3 position)
+    {
+        for(int i = 0; i < _chairCount; i++)
+        {
+            Debug.Log(Vector2.Distance(_Seats[i].transform.position, position));
+            if(Vector2.Distance(_Seats[i].transform.position, position) <= 0.5f)
+            {
+                _SeatTaken[i] = false;
+
+            }
+        }
+    }
 }
