@@ -14,8 +14,6 @@ public class Sound {
     public float pitch;
 
     [Range(0f, 0.5f)]
-    public float randomVolume = 0.1f;
-    [Range(0f, 0.5f)]
     public float randomPitch = 0.5f;
 
     private AudioSource source;

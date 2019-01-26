@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour {
         }
 
         _slider.value = sounds[0].volume;
+        DontDestroyOnLoad(transform.gameObject);
     }
 
     void Start ()
