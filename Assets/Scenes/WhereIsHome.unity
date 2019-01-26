@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1949a334635acf747af5df1d338f0a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentState: 0
+  _currentState: 1
   _drunkessLevel: 0
   _annoyanceLevel: 0
   _desiredDrink: 0
@@ -322,7 +322,6 @@ MonoBehaviour:
   _passOutChange: 0.15
   _turnSpeed: 2
   _moveSpeed: 2.5
-  trans: {fileID: 1772774261}
 --- !u!212 &1281476862
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -475,12 +474,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1772774261 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3615896006016415765, guid: d71e300e7c2e9814db54f911e0c08db2,
-    type: 3}
-  m_PrefabInstance: {fileID: 3615896004670498912}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &518529766432301340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -698,6 +691,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _currentState
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872519587229872549, guid: 8515f6747bbf800448fefadd9ed24d48,
+        type: 3}
+      propertyPath: _chairCount
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5872519587229872547, guid: 8515f6747bbf800448fefadd9ed24d48,
         type: 3}
