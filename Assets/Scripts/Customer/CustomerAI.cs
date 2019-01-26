@@ -56,29 +56,42 @@ public class CustomerAI : MonoBehaviour
                 transform.rotation = _tm.rotation;
             }
 
-        } else {
-            switch (_currentState) {
-                case state.Counter:
-                    if (_timer1.IsCompleted) {
-                        _annoyanceLevel += _annoyanceIncrease;
-                        ResetTimer(_timer1);
+        } else
+        {
+            StageActions();
+        }
+
+
+    }
+
+    private void StageActions()
+    {
+        switch (_currentState)
+        {
+            case state.Counter:
+                if (_timer1.IsCompleted)
+                {
+                    _annoyanceLevel += _annoyanceIncrease;
+                    ResetTimer(_timer1);
+                }
+                break;
+            case state.Table:
+                if (_timer1.IsCompleted)
+                {
+                    _drunkessLevel += _drunknessIncrease * _desiredDrink;
+                    ResetTimer(_timer1);
+                }
+                if (_drunkessLevel >= 0.5f)
+                {
+                    if (Random.Range(0f, 1f) <= _passOutChange)
+                    {
+                        _currentState = state.PassedOut;
                     }
-                    break;
-                case state.Table:
-                    if (_timer1.IsCompleted) {
-                        _drunkessLevel += _drunknessIncrease * _desiredDrink;
-                        ResetTimer(_timer1);
-                    }
-                    if (_drunkessLevel >= 0.5f) {
-                        if (Random.Range(0,1) <= _passOutChange) {
-                            _currentState = state.PassedOut;
-                        }
-                    }
-                    break;
-                case state.PassedOut:
-                    /// TODO: PASSOUT
-                    break;
-            }
+                }
+                break;
+            case state.PassedOut:
+                /// TODO: PASSOUT
+                break;
         }
     }
 
@@ -95,5 +108,6 @@ public class CustomerAI : MonoBehaviour
     {
         timer.Stop();
         timer.SetTime(.5f);
+        timer.StartTimer();
     }
 }
