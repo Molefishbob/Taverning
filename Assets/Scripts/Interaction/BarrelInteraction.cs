@@ -15,6 +15,8 @@ public class BarrelInteraction : GenericInteraction
     [Range(0,1)]
     public float _percentageLossPerDrink;
     public Substance _substance;
+    private PlayerInteraction _player;
+    private PlayerInteraction.hands _handEnum;
 
     // Start is called before the first frame update
     public override void Start()
@@ -23,6 +25,17 @@ public class BarrelInteraction : GenericInteraction
         if (_substance == Substance.Error) {
             _substance = Substance.Beer;
         }
+        switch (_substance) {
+            case Substance.Beer:
+                _handEnum = PlayerInteraction.hands.Beer;
+                break;
+            case Substance.Mead:
+                _handEnum = PlayerInteraction.hands.Mead;
+                break;
+            case Substance.Wine:
+                _handEnum = PlayerInteraction.hands.Wine;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -30,10 +43,10 @@ public class BarrelInteraction : GenericInteraction
     {
         if (_actionOnGoing && _liquidPercentage > 0) {
             if (_timer.IsCompleted) {
-                //if (PLAYER HANDS EMPTY) {
-                //_liquidPercentage -= _percentageLossPerDrink;
-                /// TODO: TELL PLAYER HE HAS ALCOHOL
-            //}
+                if (_player._hands == PlayerInteraction.hands.Empty) {
+                    _liquidPercentage -= _percentageLossPerDrink;
+                    _player._hands = _handEnum;
+            }
             }
         }
 
@@ -46,9 +59,10 @@ public class BarrelInteraction : GenericInteraction
 
     }
 
-    protected override void InteractionStart()
+    public override void InteractionStart(PlayerInteraction player)
     {
         ResetTimer();
+        _player = player;
         _actionOnGoing = true;
     }
 }

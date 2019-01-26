@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Tooltip("UP,DOWN,LEFT,RIGHT")]
     public Vector3[] _Rays;
-    [SerializeField, Tooltip("UP,DOWN,LEFT,RIGHT")]
-    private bool[] _CollidedSides = new bool[4];
+    [Tooltip("UP,DOWN,LEFT,RIGHT")]
+    public bool[] _CollidedSides = new bool[4];
 
     // Start is called before the first frame update
     void Start()
