@@ -9,13 +9,15 @@ public class TableInteraction : GenericInteraction
         Error,
         Empty,
         Full,
-        Fighting
+        Fighting,
+        PassOut
     }
 
     public State _currentState;
     public int _chairCount;
     private GameObject[] _Seats;
     private bool[] _SeatTaken;
+    public GameObject[] _Customers;
 
     // Start is called before the first frame update
      public override void Start()
@@ -23,6 +25,7 @@ public class TableInteraction : GenericInteraction
         base.Start();
         _Seats = new GameObject[_chairCount];
         _SeatTaken = new bool[_chairCount];
+        _Customers = new GameObject[_chairCount];
         for (int i = 0; i < _chairCount; i++)
         {
             _Seats[i] = transform.GetChild(i + 1).gameObject;
@@ -62,13 +65,15 @@ public class TableInteraction : GenericInteraction
         _timer.Stop();
     }
 
-    public Transform GetFreeSeat()
+    public Transform GetFreeSeat(GameObject customer)
     {
         for(int i = 0; i < _chairCount; i++)
         {
             if (!_SeatTaken[i])
             {
                 _SeatTaken[i] = true;
+                _Customers[i] = customer;
+                CheckIfFull();
                 return _Seats[i].transform;
             }
         }
@@ -83,8 +88,33 @@ public class TableInteraction : GenericInteraction
             if(Vector2.Distance(_Seats[i].transform.position, position) <= 0.5f)
             {
                 _SeatTaken[i] = false;
-
+                if (_currentState = State.Full)
+                    _currentState = State.Empty;
             }
         }
+    }
+
+    public void CheckIfFull()
+    {
+        bool full = false;
+        for(int i = 0; i < _chairCount; i++)
+        {
+            if (_SeatTaken[i])
+                full = true;
+            else
+            {
+                full = false;
+                break;
+            }
+        }
+        if (full)
+        {
+            _currentState = State.Full;
+        }
+    }
+
+    public void IHaveFallenAndCantGetUp()
+    {
+        _currentState = State.PassOut;
     }
 }
