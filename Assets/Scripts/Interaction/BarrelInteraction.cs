@@ -30,13 +30,16 @@ public class BarrelInteraction : GenericInteraction
     {
         if (_actionOnGoing && _liquidPercentage > 0) {
             if (_timer.IsCompleted) {
-                _liquidPercentage -= _percentageLossPerDrink;
+                //if (PLAYER HANDS EMPTY) {
+                //_liquidPercentage -= _percentageLossPerDrink;
                 /// TODO: TELL PLAYER HE HAS ALCOHOL
+            //}
             }
         }
 
         if (_liquidPercentage <= 0) {
             /// TODO: ACTIVATE DESTRUCTION OF BARREL
+            /// TODO: ACTIVATE EMPTY BARREL WARNING MESSAGE
         } else if (_liquidPercentage <= 0.1f) {
             /// TODO: ACTIVATE WARNING MESSAGE
         }

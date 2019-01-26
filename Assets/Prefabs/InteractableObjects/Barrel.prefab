@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 3615896006016415764}
   - component: {fileID: 3615896006016415763}
   - component: {fileID: 3615896006016415766}
-  m_Layer: 0
+  - component: {fileID: 1350504564}
+  - component: {fileID: 1350504563}
+  m_Layer: 8
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: InteractableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,3 +112,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3faa9e5de08a1dc40b919fbd71466568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &1350504564
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615896006016415762}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0015038013}
+  m_Size: {x: 0.2, y: 0.5970211}
+  m_Direction: 0
+--- !u!70 &1350504563
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615896006016415762}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0015037062, y: 1.7925572e-10}
+  m_Size: {x: 0.5940155, y: 0.200002}
+  m_Direction: 1

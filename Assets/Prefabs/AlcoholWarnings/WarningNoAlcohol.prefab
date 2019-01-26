@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 518529765480537636}
   - component: {fileID: 518529765480537643}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WarningNoAlcohol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
