@@ -29,7 +29,7 @@ public class CustomerAI : MonoBehaviour
 	public float _turnSpeed;
 	public float _moveSpeed;
     private Vector3 _center;
-    public Transform trans;
+    private Transform _tm;
     private bool _moving;
     
 
@@ -40,21 +40,20 @@ public class CustomerAI : MonoBehaviour
         _timer1 = GetComponent<Timer>();
         _desiredDrink = Random.Range(1,4);
         _passOutChange = _defaultValue * _desiredDrink;
-        MoveToState(trans.position);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (_moving) {
-            Vector3 dir = trans.position - transform.position;
+            Vector3 dir = _tm.position - transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
             transform.Translate(Vector3.down * Time.deltaTime * _moveSpeed,Space.Self);
-            if (Vector3.Distance(trans.position,transform.position) <= 0.1f) {
-                transform.position = trans.position;
+            if (Vector3.Distance(_tm.position,transform.position) <= 0.1f) {
+                transform.position = _tm.position;
                 _moving = false;
-                transform.rotation = trans.rotation;
+                transform.rotation = _tm.rotation;
             }
 
         } else {
@@ -83,8 +82,13 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
-    public void MoveToState(Vector3 pos) {
-        _center = pos;
+    public void GiveCorrectAlcohol() {
+        GameManager.instance.GetSeat();
+    }
+
+    public void MoveToState(Transform trans) {
+        _center = trans.position;
+        _tm = trans;
         _moving = true;
     }
     private void ResetTimer(Timer timer)
