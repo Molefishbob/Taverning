@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5872519587229872549}
   - component: {fileID: 5872519587229872547}
   - component: {fileID: 5872519587229872546}
+  - component: {fileID: 5872519587229872552}
   m_Layer: 8
   m_Name: Table_2x2
   m_TagString: InteractableObject
@@ -133,6 +134,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4, y: 1}
   m_Direction: 1
+--- !u!114 &5872519587229872552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5872519587229872550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3faa9e5de08a1dc40b919fbd71466568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8793491736617778273
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +157,7 @@ GameObject:
   - component: {fileID: 6622254174601099699}
   - component: {fileID: 739855350398804781}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: COLLIDER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -14,11 +14,20 @@ public class TableInteraction : GenericInteraction
 
     public State _currentState;
     public int _chairCount;
+    private GameObject[] _Seats;
+    private bool[] _SeatTaken;
 
     // Start is called before the first frame update
      public override void Start()
     {
         base.Start();
+        _Seats = new GameObject[_chairCount];
+        _SeatTaken = new bool[_chairCount];
+        for (int i = 0; i < _chairCount; i++)
+        {
+            _Seats[i] = transform.GetChild(i + 1).gameObject;
+            _SeatTaken[i] = false;
+        }
     }
 
     // Update is called once per frame
@@ -51,5 +60,18 @@ public class TableInteraction : GenericInteraction
     public override void InteractionInterrupt(PlayerInteraction player)
     {
         _timer.Stop();
+    }
+
+    public Transform GetFreeSeat()
+    {
+        for(int i = 0; i < _chairCount; i++)
+        {
+            if (!_SeatTaken[i])
+            {
+                _SeatTaken[i] = true;
+                return _Seats[i].transform;
+            }
+        }
+        return null;
     }
 }
