@@ -1,30 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TAMK.SpaceShooter;
 
 public abstract class GenericInteraction : MonoBehaviour
 {
     public float _actionTime;
     public Collider2D[] _colliders;
-    private float _timeInteracted;
-    private bool _actionOnGoing;
+    protected Timer _timer;
+    protected float _timeInteracted;
+    protected bool _actionOnGoing;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
-        
+        _timer = GetComponent<Timer>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    protected abstract void InteractionStart();
+
+    protected void ResetTimer()
     {
-        if (_actionOnGoing)
-        {
-            
-        }
+        _timer.Stop();
+        _timer.SetTime(_actionTime);
+        _timer.StartTimer();
     }
-
-    protected abstract void Interaction();
-
-    protected abstract void ChangeState(int state);
 }
