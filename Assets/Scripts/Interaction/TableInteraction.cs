@@ -43,4 +43,8 @@ public class TableInteraction : GenericInteraction
         ResetTimer();
         _actionOnGoing = true;
     }
+
+    public void ChangeState(State state) {
+        _currentState = state;
+    }
 }
