@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3[] _Rays;
     [Tooltip("UP,DOWN,LEFT,RIGHT")]
     public bool[] _CollidedSides = new bool[4];
+    public LayerMask _UnignoredLayersMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void ShootLaserz()
     {
         // UP RAY
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[0].x, transform.position.y + _Rays[0].y), transform.right, _Rays[0].z);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[0].x, transform.position.y + _Rays[0].y), transform.right, _Rays[0].z, _UnignoredLayersMovement);
         if (hit.collider != null)
         {
             Debug.DrawLine(new Vector2(transform.position.x + _Rays[0].x, transform.position.y + _Rays[0].y), hit.point, Color.red);
@@ -43,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
             _CollidedSides[0] = false;
         }
         // BOTTOM
-        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[1].x, transform.position.y + _Rays[1].y), transform.right, _Rays[1].z);
+        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[1].x, transform.position.y + _Rays[1].y), transform.right, _Rays[1].z, _UnignoredLayersMovement);
         if (hit.collider != null)
         {
             Debug.DrawLine(new Vector2(transform.position.x + _Rays[1].x, transform.position.y + _Rays[1].y), hit.point, Color.red);
@@ -55,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             _CollidedSides[1] = false;
         }
         // LEFT
-        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[2].x, transform.position.y + _Rays[2].y), transform.up, _Rays[2].z);
+        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[2].x, transform.position.y + _Rays[2].y), transform.up, _Rays[2].z, _UnignoredLayersMovement);
         if (hit.collider != null)
         {
             Debug.DrawLine(new Vector2(transform.position.x + _Rays[2].x, transform.position.y + _Rays[2].y), hit.point, Color.red);
@@ -67,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
             _CollidedSides[2] = false;
         }
         // RIGHT
-        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[3].x, transform.position.y + _Rays[3].y), transform.up, _Rays[3].z);
+        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[3].x, transform.position.y + _Rays[3].y), transform.up, _Rays[3].z, _UnignoredLayersMovement);
         if (hit.collider != null)
         {
             Debug.DrawLine(new Vector2(transform.position.x + _Rays[3].x, transform.position.y + _Rays[3].y), hit.point, Color.red);
