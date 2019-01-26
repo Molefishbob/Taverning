@@ -31,6 +31,8 @@ public class CustomerAI : MonoBehaviour
     private Vector3 _center;
     private Transform _tm;
     private bool _moving;
+    private bool _passingOut;
+    private GameObject _myTable;
     
 
     // Start is called before the first frame update
@@ -85,21 +87,28 @@ public class CustomerAI : MonoBehaviour
                 {
                     if (Random.Range(0f, 1f) <= _passOutChange)
                     {
+                        PassOut();
                         _currentState = state.PassedOut;
                     }
                 }
                 break;
             case state.PassedOut:
-                /// TODO: PASSOUT
+                /// TODO: ANIMATE PASSING OUT
                 break;
         }
     }
 
+    public void PassOut() {
+        _passingOut = true;
+        _myTable.GetComponent<TableInteraction>().IHaveFallenAndCantGetUp();
+    }
+
     public void GiveCorrectAlcohol() {
-        GameManager.instance.GetSeat();
+        GameManager.instance.GetSeat(gameObject);
     }
 
     public void MoveToState(Transform trans) {
+        _myTable = trans.parent.gameObject;
         _center = trans.position;
         _tm = trans;
         _moving = true;

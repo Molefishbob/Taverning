@@ -42,11 +42,11 @@ public class GameManager : MonoBehaviour
         _SpawnedCustomers.Remove(customer);
     }
 
-    public Transform GetSeat()
+    public Transform GetSeat(GameObject customer)
     {
         Transform chair = null;
         for(int a = 0; a < _Tables.Length;a++) {
-            chair = _Tables[a].GetComponent<TableInteraction>().GetFreeSeat();
+            chair = _Tables[a].GetComponent<TableInteraction>().GetFreeSeat(customer);
             if (chair != null) {
                 return chair;
             }
