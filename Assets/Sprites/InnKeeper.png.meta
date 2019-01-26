@@ -6,6 +6,10 @@ TextureImporter:
     21300002: InnKeeper_1
     21300004: InnKeeper_2
     21300006: InnKeeper_3
+    21300008: InnKeeper_4
+    21300010: InnKeeper_5
+    21300012: InnKeeper_6
+    21300014: InnKeeper_7
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -92,17 +96,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d0d917e35db82543afa341baeca76bb
+      spriteID: d9b80034267c83d4eac0634c0d94e1d6
       vertices: []
       indices: 
       edges: []
@@ -112,17 +116,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b11c159f633258148a1d6555dbfb9d8f
+      spriteID: cb0f9709cab792140976f7605b519b26
       vertices: []
       indices: 
       edges: []
@@ -132,17 +136,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63be7dbc21de7c140a0ed9f3a2015a94
+      spriteID: fa4c05fd4b1532e42b2557776ce5602d
       vertices: []
       indices: 
       edges: []
@@ -152,17 +156,97 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b6585b3c62cd314f8d7b289ce71a388
+      spriteID: 8f6b824f90ad4da45bc4c751b06c77aa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InnKeeper_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b39dbb94507f894295287f71d7f7291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InnKeeper_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16c21a7ca53b1234fa89937c6647469c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InnKeeper_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639ded6d55de58043afdd2b8fac7cfd8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InnKeeper_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dceb3c5b6bc37fd4596c56ea133b019a
       vertices: []
       indices: 
       edges: []
