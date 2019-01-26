@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(_vInputs != Vector2.zero)
         {
-            Vector3 dir = transform.position + new Vector3(_vInputs.x, _vInputs.y, 0) - transform.position;
+            Vector3 dir = new Vector3(_vInputs.x, _vInputs.y, 0);
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
         }
