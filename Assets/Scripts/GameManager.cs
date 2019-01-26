@@ -41,4 +41,16 @@ public class GameManager : MonoBehaviour
     {
         _SpawnedCustomers.Remove(customer);
     }
+
+    public Transform GetSeat()
+    {
+        Transform chair = null;
+        for(int a = 0; a < _Tables.Length;a++) {
+            chair = _Tables[a].GetComponent<TableInteraction>().GetFreeSeat();
+            if (chair != null) {
+                return chair;
+            }
+        }
+        return chair;
+    }
 }
