@@ -45,7 +45,7 @@ public class BarrelInteraction : GenericInteraction
             if (_timer.IsCompleted) {
                 if (_player._hands == PlayerInteraction.hands.Empty) {
                     _liquidPercentage -= _percentageLossPerDrink;
-                    _player._hands = _handEnum;
+                    _player._hands = _handEnum;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
             }
             }
         }
@@ -64,5 +64,10 @@ public class BarrelInteraction : GenericInteraction
         ResetTimer();
         _player = player;
         _actionOnGoing = true;
+    }
+
+    public override void InteractionInterrupt(PlayerInteraction player)
+    {
+        _timer.Stop();
     }
 }

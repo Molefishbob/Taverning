@@ -27,13 +27,14 @@ public class PlayerMovement : MonoBehaviour
         _vInputs.y = Input.GetAxis("Vertical");
 
         ShootLaserz();
+        RotatePlayer();
         Move();
     }
 
     void ShootLaserz()
     {
         // UP RAY
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[0].x, transform.position.y + _Rays[0].y), transform.right, _Rays[0].z, _UnignoredLayersMovement);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[0].x, transform.position.y + _Rays[0].y), Vector2.right, _Rays[0].z, _UnignoredLayersMovement);
         if (hit.collider != null)
         {
             Debug.DrawLine(new Vector2(transform.position.x + _Rays[0].x, transform.position.y + _Rays[0].y), hit.point, Color.red);
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             _CollidedSides[0] = false;
         }
         // BOTTOM
-        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[1].x, transform.position.y + _Rays[1].y), transform.right, _Rays[1].z, _UnignoredLayersMovement);
+        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[1].x, transform.position.y + _Rays[1].y), Vector2.right, _Rays[1].z, _UnignoredLayersMovement);
         if (hit.collider != null)
         {
             Debug.DrawLine(new Vector2(transform.position.x + _Rays[1].x, transform.position.y + _Rays[1].y), hit.point, Color.red);
@@ -56,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             _CollidedSides[1] = false;
         }
         // LEFT
-        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[2].x, transform.position.y + _Rays[2].y), transform.up, _Rays[2].z, _UnignoredLayersMovement);
+        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[2].x, transform.position.y + _Rays[2].y), Vector2.up, _Rays[2].z, _UnignoredLayersMovement);
         if (hit.collider != null)
         {
             Debug.DrawLine(new Vector2(transform.position.x + _Rays[2].x, transform.position.y + _Rays[2].y), hit.point, Color.red);
@@ -68,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
             _CollidedSides[2] = false;
         }
         // RIGHT
-        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[3].x, transform.position.y + _Rays[3].y), transform.up, _Rays[3].z, _UnignoredLayersMovement);
+        hit = Physics2D.Raycast(new Vector2(transform.position.x + _Rays[3].x, transform.position.y + _Rays[3].y), Vector2.up, _Rays[3].z, _UnignoredLayersMovement);
         if (hit.collider != null)
         {
             Debug.DrawLine(new Vector2(transform.position.x + _Rays[3].x, transform.position.y + _Rays[3].y), hit.point, Color.red);
@@ -102,8 +103,19 @@ public class PlayerMovement : MonoBehaviour
         }
         if (_vInputs != Vector2.zero)
         {
-            transform.Translate(_vInputs * Time.deltaTime * _fSpeed);
+            transform.Translate(_vInputs * Time.deltaTime * _fSpeed, Space.World);
         }
+    }
+
+    void RotatePlayer()
+    {
+        if(_vInputs != Vector2.zero)
+        {
+            Vector3 dir = transform.position + new Vector3(_vInputs.x, _vInputs.y, 0) - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+        }
+        
     }
 
 }

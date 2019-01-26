@@ -98,7 +98,7 @@ MonoBehaviour:
   _colliders:
   - {fileID: 5872519587229872547}
   - {fileID: 5872519587229872546}
-  _currentState: 0
+  _currentState: 1
   _chairCount: 8
 --- !u!70 &5872519587229872547
 CapsuleCollider2D:
