@@ -65,4 +65,9 @@ public class BarrelInteraction : GenericInteraction
         _player = player;
         _actionOnGoing = true;
     }
+
+    public override void InteractionInterrupt(PlayerInteraction player)
+    {
+        _timer.Stop();
+    }
 }

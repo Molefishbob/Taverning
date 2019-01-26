@@ -47,4 +47,9 @@ public class TableInteraction : GenericInteraction
     public void ChangeState(State state) {
         _currentState = state;
     }
+
+    public override void InteractionInterrupt(PlayerInteraction player)
+    {
+        _timer.Stop();
+    }
 }

@@ -20,6 +20,8 @@ public abstract class GenericInteraction : MonoBehaviour
 
     public abstract void InteractionStart(PlayerInteraction player);
 
+    public abstract void InteractionInterrupt(PlayerInteraction player);
+
     protected void ResetTimer()
     {
         _timer.Stop();
