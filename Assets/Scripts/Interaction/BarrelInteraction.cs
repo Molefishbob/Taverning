@@ -43,7 +43,7 @@ public class BarrelInteraction : GenericInteraction
     {
         if (_actionOnGoing && _liquidPercentage > 0) {
             if (_timer.IsCompleted) {
-                if (_player._hands == PlayerInteraction.hands.Empty) {
+                if (_player._hands == PlayerInteraction.hands.Empty || _player._hands != _handEnum) {
                     _liquidPercentage -= _percentageLossPerDrink;
                     _player._hands = _handEnum;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
             }
