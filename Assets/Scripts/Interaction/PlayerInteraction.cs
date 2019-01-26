@@ -13,8 +13,9 @@ public class PlayerInteraction : MonoBehaviour
     public hands _hands;
     public LayerMask _InteractionLayer;
     public float _CircleCastRadius = 0.25f;
-    public bool IHIT;
+    public bool iHit;
     RaycastHit2D _hit;
+    private bool _doing;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +27,16 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         ShootLazer();
-        if(IHIT) {
-            _hit.transform.gameObject.GetComponent<GenericInteraction>().InteractionStart(this);
-        } else {
+        if(iHit) {
+            if (!_doing) {
+                _hit.transform.gameObject.GetComponent<GenericInteraction>().InteractionStart(this);
+                _doing = true;
+            }
+        } else if (_doing && !iHit) {
             _hit.transform.gameObject.GetComponent<GenericInteraction>().InteractionInterrupt(this);
+            _doing = false;
+        } else {
+            _doing = false;
         }
     }
 
@@ -39,10 +46,10 @@ public class PlayerInteraction : MonoBehaviour
         if(hit.collider != null)
         {   
             _hit = hit;
-            IHIT = true;
+            iHit = true;
         } else
         {
-            IHIT = false;
+            iHit = false;
         }
     }
 }
