@@ -38,7 +38,7 @@ public class TableInteraction : GenericInteraction
         }
     }
 
-    protected override void InteractionStart()
+    public override void InteractionStart(PlayerInteraction player)
     {
         ResetTimer();
         _actionOnGoing = true;

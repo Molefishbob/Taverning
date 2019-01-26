@@ -18,7 +18,7 @@ public abstract class GenericInteraction : MonoBehaviour
     }
 
 
-    protected abstract void InteractionStart();
+    public abstract void InteractionStart(PlayerInteraction player);
 
     protected void ResetTimer()
     {
