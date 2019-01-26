@@ -13,6 +13,12 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("UP,DOWN,LEFT,RIGHT")]
     public bool[] _CollidedSides = new bool[4];
     public LayerMask _UnignoredLayersMovement;
+    private Animator _anim;
+
+    private void Awake()
+    {
+        _anim = gameObject.GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +31,13 @@ public class PlayerMovement : MonoBehaviour
     {
         _vInputs.x = Input.GetAxis("Horizontal");
         _vInputs.y = Input.GetAxis("Vertical");
+        if (_vInputs.x != 0 || _vInputs.y != 0)
+        {
+            _anim.SetBool("Walking", true);
+        } else
+        {
+            _anim.SetBool("Walking", false);
+        }
 
         ShootLaserz();
         RotatePlayer();
@@ -84,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        
         Vector2 tempMovement = _vInputs;
         if (_CollidedSides[0] && _vInputs.y > 0)
         {
