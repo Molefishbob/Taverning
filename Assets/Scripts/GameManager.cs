@@ -47,10 +47,14 @@ public class GameManager : MonoBehaviour
         }
         if (_Gold < 0)
         {
-           _MoniText.text = "You lost the game :(";
+           _MoniText.text = "You lost the game :( Press ESC to quit";
             paused = true;
         }
-       
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Quitted");
+            Application.Quit();
+        }
     }
 
     void SpawnCustomer()
