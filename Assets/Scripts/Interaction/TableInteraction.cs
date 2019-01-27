@@ -10,7 +10,8 @@ public class TableInteraction : GenericInteraction
         Empty,
         Full,
         Fighting,
-        PassOut
+        PassOut,
+        Broken
     }
 
     public State _currentState;
@@ -78,6 +79,16 @@ public class TableInteraction : GenericInteraction
             }
         }
         return null;
+    }
+
+    public void TableGoBroken() {
+        /// TODO: SPAWN CLOUD
+        for (int a = 0 ; a < _Customers.Length;a++) {
+            Destroy(_Customers[a].gameObject);
+            _SeatTaken[a] = false;
+        }
+        ///       FADE OUT CLOUD
+        _currentState = State.Broken;
     }
 
     public void ReleaseTheChair(Vector3 position)
