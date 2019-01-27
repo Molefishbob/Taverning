@@ -68,11 +68,11 @@ public class CustomerAI : MonoBehaviour
                     }
                     else if (_desiredDrink == 2)
                     {
-                        _bubbles[0].gameObject.SetActive(true);
+                        _bubbles[1].gameObject.SetActive(true);
                     }
                     else if (_desiredDrink == 3)
                     {
-                        _bubbles[0].gameObject.SetActive(true);
+                        _bubbles[2].gameObject.SetActive(true);
                     }
                 }
 
