@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] _Tables = new GameObject[4];
     public GameObject[] _CustomersToSpawn = new GameObject[5];
     public GameObject _SpawnPoint;
+    public GameObject _Counter;
     public List<GameObject> _SpawnedCustomers;
     public bool paused = false;
     public float _SpawnTimer = 1;
@@ -48,8 +49,17 @@ public class GameManager : MonoBehaviour
         int CustomerNumber = Random.Range(0, 5);
         GameObject _JustSpawned = Instantiate(_CustomersToSpawn[CustomerNumber]);
         _JustSpawned.transform.position = _SpawnPoint.transform.position;
-        _JustSpawned.GetComponent<CustomerAI>().MoveToState(GetSeat(_JustSpawned));
-        _SpawnedCustomers.Add(_JustSpawned);
+        if (_Counter.GetComponent<CounterSeat>().IsSpotFree())
+        {
+            _Counter.GetComponent<CounterSeat>().AddCustomer(_JustSpawned.GetComponent<CustomerAI>());
+            _JustSpawned.GetComponent<CustomerAI>().MoveToState(_Counter.transform);
+            _SpawnedCustomers.Add(_JustSpawned);
+        } else
+        {
+            Destroy(_JustSpawned);
+        }
+        
+        
     }
     void DespawnCustomer(GameObject customer)
     {

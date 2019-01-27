@@ -7,11 +7,13 @@ public class CounterSeat : MonoBehaviour
 
     public CustomerAI _customer;
     private Collider2D _coll;
+    private CounterInteraction _counterInteraction;
     // Start is called before the first frame update
     void Start()
     {
         _coll = GetComponent<BoxCollider2D>();
         _coll.enabled = false;
+        _counterInteraction = transform.GetChild(0).gameObject.GetComponent<CounterInteraction>();
     }
 
     // Update is called once per frame
