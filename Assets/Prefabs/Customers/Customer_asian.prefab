@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2268275285756117687}
   - component: {fileID: 2842561937220395836}
   - component: {fileID: 3702535298235592669}
+  - component: {fileID: 2950948241881926560}
+  - component: {fileID: 4943184604708209247}
   m_Layer: 0
   m_Name: Customer_asian
   m_TagString: Untagged
@@ -101,3 +103,27 @@ MonoBehaviour:
   _passOutChange: 0.15
   _turnSpeed: 2
   _moveSpeed: 2.5
+--- !u!114 &2950948241881926560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921129172333403347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3faa9e5de08a1dc40b919fbd71466568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4943184604708209247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921129172333403347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3faa9e5de08a1dc40b919fbd71466568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
