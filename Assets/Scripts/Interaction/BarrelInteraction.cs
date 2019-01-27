@@ -17,6 +17,8 @@ public class BarrelInteraction : GenericInteraction
     public Substance _substance;
     private PlayerInteraction _player;
     private PlayerInteraction.hands _handEnum;
+    public AudioClip _pour;
+    private AudioSource _audio;
 
     // Start is called before the first frame update
     public override void Start()
@@ -36,6 +38,7 @@ public class BarrelInteraction : GenericInteraction
                 _handEnum = PlayerInteraction.hands.Wine;
                 break;
         }
+        _audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,6 +46,7 @@ public class BarrelInteraction : GenericInteraction
     {
         if (_actionOnGoing) {
             if (_timer.IsCompleted) {
+                _audio.PlayOneShot(_pour);
                 if (_player._hands == PlayerInteraction.hands.Empty || _player._hands != _handEnum) {
                     
                     _player._hands = _handEnum;
