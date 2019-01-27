@@ -36,7 +36,6 @@ public class CustomerAI : MonoBehaviour
     private GameObject _myTable;
     private Animator _anim;
     public GameObject[] _bubbles;
-    public GameObject _zzz;
 
 
     // Start is called before the first frame update
@@ -66,15 +65,14 @@ public class CustomerAI : MonoBehaviour
                     if (_desiredDrink == 1)
                     {
                         _bubbles[0].gameObject.SetActive(true);
-                       
                     }
                     else if (_desiredDrink == 2)
                     {
-                        _bubbles[0].gameObject.SetActive(true);
+                        _bubbles[1].gameObject.SetActive(true);
                     }
                     else if (_desiredDrink == 3)
                     {
-                        _bubbles[0].gameObject.SetActive(true);
+                        _bubbles[2].gameObject.SetActive(true);
                     }
                 }
 
@@ -101,7 +99,7 @@ public class CustomerAI : MonoBehaviour
                     ResetTimer(_timer1);
                 }
                 if (_annoyanceLevel >= 1) {
-                    _myTable.GetComponent<CounterSeat>().CustomerLeave();
+                    _myTable.transform.GetChild(0).GetComponent<CounterSeat>().CustomerLeave();
                     GameManager.instance.GetSeat(gameObject);
                     _myTable.GetComponent<TableInteraction>()._currentState = TableInteraction.State.Fighting;
                 }
@@ -111,13 +109,13 @@ public class CustomerAI : MonoBehaviour
                 {
                     _drunkessLevel += _drunknessIncrease * _desiredDrink;
                     ResetTimer(_timer1);
-                }
-                if (_drunkessLevel >= 0.5f)
-                {
-                    if (Random.Range(0f, 1f) <= _passOutChange)
+                    if (_drunkessLevel >= 0.5f)
                     {
-                        PassOut();
-                        _currentState = state.PassedOut;
+                        if (Random.Range(0f, 1f) <= _passOutChange)
+                        {
+                            PassOut();
+                            _currentState = state.PassedOut;
+                        }
                     }
                 }
                 break;
@@ -161,3 +159,24 @@ public class CustomerAI : MonoBehaviour
         timer.StartTimer();
     }
 }
+
+    private Animator _anim;
+    public GameObject[] _bubbles;
+    public GameObject _zzz;
+
+
+    // Start is called before the first frame update
+                if(_currentState == state.Counter)
+                {
+                    if (_desiredDrink == 1)
+                    {
+                        _bubbles[0].gameObject.SetActive(true);
+                    }
+                    else if (_desiredDrink == 2)
+                    {
+                        _bubbles[1].gameObject.SetActive(true);
+                    }
+                    else if (_desiredDrink == 3)
+                    {
+                        _bubbles[2].gameObject.SetActive(true);
+                    }

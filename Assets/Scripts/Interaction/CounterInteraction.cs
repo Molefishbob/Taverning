@@ -22,12 +22,10 @@ public class CounterInteraction : GenericInteraction
             if (_timer.IsCompleted && (int)_player._hands == _customer._desiredDrink)
             {
                 _customer._currentState = CustomerAI.state.Table;
-                Debug.Log("Before" + _player._hands);
                 _player._hands = PlayerInteraction.hands.Empty;
-                Debug.Log("Before" + _player._hands);
                 _customer.MoveToState(GameManager.instance.GetSeat(_customer.gameObject));
                 _counterSeat.CustomerLeave();
-                
+                _actionOnGoing = false;
             }
         }
     }
