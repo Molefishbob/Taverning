@@ -28,4 +28,10 @@ public abstract class GenericInteraction : MonoBehaviour
         _timer.SetTime(_actionTime);
         _timer.StartTimer();
     }
+    protected void ResetTimer(float time)
+    {
+        _timer.Stop();
+        _timer.SetTime(time);
+        _timer.StartTimer();
+    }
 }
