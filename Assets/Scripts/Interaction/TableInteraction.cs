@@ -22,9 +22,11 @@ public class TableInteraction : GenericInteraction
     public GameObject _dustCloud;
     private bool _cloudActive;
     private bool _throwAway;
+    public AudioClip _fight;
+    private AudioSource _audio;
 
     // Start is called before the first frame update
-     public override void Start()
+    public override void Start()
     {
         base.Start();
         _Seats = new GameObject[_chairCount];
@@ -35,7 +37,9 @@ public class TableInteraction : GenericInteraction
             _Seats[i] = transform.GetChild(i + 1).gameObject;
             _SeatTaken[i] = false;
         }
+        _audio = GetComponent<AudioSource>();
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -43,6 +47,7 @@ public class TableInteraction : GenericInteraction
         if (_cloudActive) {
             if (_timer.IsCompleted) {
                 _dustCloud.SetActive(false);
+                _audio.Stop();
                 _cloudActive = false;
             }
         }
@@ -113,6 +118,7 @@ public class TableInteraction : GenericInteraction
 
     public void TableGoBroken() {
         _dustCloud.SetActive(true);
+        _audio.PlayOneShot(_fight);
         GameManager.instance._Gold -= 15;
         ResetTimer(1f);
         for (int a = 0 ; a < _Customers.Length;a++) {
