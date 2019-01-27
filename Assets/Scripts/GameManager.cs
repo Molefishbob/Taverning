@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public bool paused = false;
     public float _SpawnTimer = 1;
     private float _Timer = 0;
+    private int _maxCustomers = 12;
     
     private void Awake()
     {
@@ -59,22 +60,25 @@ public class GameManager : MonoBehaviour
 
     void SpawnCustomer()
     {
-        int CustomerNumber = Random.Range(0, 5);
-        GameObject _JustSpawned = Instantiate(_CustomersToSpawn[CustomerNumber]);
-        _JustSpawned.transform.position = _SpawnPoint.transform.position;
-        if (_Counter.GetComponent<CounterSeat>().IsSpotFree())
+        if (_SpawnedCustomers.Count != _maxCustomers)
         {
-            _Counter.GetComponent<CounterSeat>().AddCustomer(_JustSpawned.GetComponent<CustomerAI>());
-            _JustSpawned.GetComponent<CustomerAI>().MoveToState(_Counter.transform);
-            _SpawnedCustomers.Add(_JustSpawned);
-        } else
-        {
-            Destroy(_JustSpawned);
+            int CustomerNumber = Random.Range(0, 5);
+            GameObject _JustSpawned = Instantiate(_CustomersToSpawn[CustomerNumber]);
+            _JustSpawned.transform.position = _SpawnPoint.transform.position;
+            if (_Counter.GetComponent<CounterSeat>().IsSpotFree())
+            {
+                _Counter.GetComponent<CounterSeat>().AddCustomer(_JustSpawned.GetComponent<CustomerAI>());
+                _JustSpawned.GetComponent<CustomerAI>().MoveToState(_Counter.transform);
+                _SpawnedCustomers.Add(_JustSpawned);
+            }
+            else
+            {
+                Destroy(_JustSpawned);
+            }
+            Debug.Log("Spawned" + _SpawnedCustomers.Count);
         }
-        
-        
     }
-    void DespawnCustomer(GameObject customer)
+    public void DespawnCustomer(GameObject customer)
     {
         _SpawnedCustomers.Remove(customer);
     }

@@ -64,7 +64,7 @@ public class TableInteraction : GenericInteraction
                 if (_timer.IsCompleted) {
                      for (int a = 0 ; a < _Customers.Length;a++) {
                         if (_Customers[a] != null && (int) _Customers[a].GetComponent<CustomerAI>()._currentState == 2) {
-                           Debug.Log("help");
+                            GameManager.instance.DespawnCustomer(_Customers[a]);
                             Destroy(_Customers[a].gameObject);
                         }
                         _SeatTaken[a] = false;
@@ -117,6 +117,7 @@ public class TableInteraction : GenericInteraction
         ResetTimer(1f);
         for (int a = 0 ; a < _Customers.Length;a++) {
             if (_Customers[a] != null) {
+                GameManager.instance.DespawnCustomer(_Customers[a]);
                 Destroy(_Customers[a].gameObject);
             }
             _SeatTaken[a] = false;
