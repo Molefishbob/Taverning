@@ -21,6 +21,7 @@ public class TableInteraction : GenericInteraction
     public GameObject[] _Customers;
     public GameObject _dustCloud;
     private bool _cloudActive;
+    private bool _throwAway;
 
     // Start is called before the first frame update
      public override void Start()
@@ -57,9 +58,21 @@ public class TableInteraction : GenericInteraction
         {
             _currentState = State.Empty;
         }
-        if (_currentState == State.Fighting)
+        if (_currentState == State.PassOut)
         {
-            
+            if (_throwAway) {
+                if (_timer.IsCompleted) {
+                     for (int a = 0 ; a < _Customers.Length;a++) {
+                        if (_Customers[a] != null && (int) _Customers[a].GetComponent<CustomerAI>()._currentState == 2) {
+                           Debug.Log("help");
+                            Destroy(_Customers[a].gameObject);
+                        }
+                        _SeatTaken[a] = false;
+                    }
+                    _throwAway = false;
+                    _currentState = State.Empty;
+                }
+            }
         }
     }
 
@@ -67,6 +80,9 @@ public class TableInteraction : GenericInteraction
     {
         ResetTimer();
         _actionOnGoing = true;
+        if (_currentState == State.PassOut) {
+            _throwAway = true;
+        }
     }
 
     public void ChangeState(State state) {
@@ -76,6 +92,8 @@ public class TableInteraction : GenericInteraction
     public override void InteractionInterrupt(PlayerInteraction player)
     {
         _timer.Stop();
+        _actionOnGoing = false;
+        _throwAway = false;
     }
 
     public Transform GetFreeSeat(GameObject customer)
@@ -95,6 +113,7 @@ public class TableInteraction : GenericInteraction
 
     public void TableGoBroken() {
         _dustCloud.SetActive(true);
+        GameManager.instance._Gold -= 15;
         ResetTimer(1f);
         for (int a = 0 ; a < _Customers.Length;a++) {
             if (_Customers[a] != null) {
@@ -103,7 +122,9 @@ public class TableInteraction : GenericInteraction
             _SeatTaken[a] = false;
         }
         _cloudActive = true;
-        _currentState = State.Broken;
+
+        //_currentState = State.Broken;
+        /// NO TIME (RIP)
     }
 
     public void ReleaseTheChair(Vector3 position)

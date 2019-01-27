@@ -24,7 +24,6 @@ public class CounterInteraction : GenericInteraction
         {
             if (_timer.IsCompleted && (int)_player._hands == _customer._desiredDrink)
             {
-                _audio.PlayOneShot(_money);
                 _customer._currentState = CustomerAI.state.Table;
                 _player._hands = PlayerInteraction.hands.Empty;
                 _customer.MoveToState(GameManager.instance.GetSeat(_customer.gameObject));
@@ -47,3 +46,6 @@ public class CounterInteraction : GenericInteraction
         _timer.Stop();
     }
 }
+
+                GameManager.instance._Gold += (int)_player._hands * 5;
+                _audio.PlayOneShot(_money);

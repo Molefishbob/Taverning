@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public float _Gold;
+    public TMP_Text _MoniText;
     public GameObject[] _Tables = new GameObject[4];
     public GameObject[] _CustomersToSpawn = new GameObject[5];
     public GameObject _SpawnPoint;
@@ -41,6 +43,17 @@ public class GameManager : MonoBehaviour
                 _Timer = 0;
                 SpawnCustomer();
             }
+            _MoniText.text = "Gold: " + _Gold;
+        }
+        if (_Gold < 0)
+        {
+           _MoniText.text = "You lost the game :( Press ESC to quit";
+            paused = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Quitted");
+            Application.Quit();
         }
     }
 

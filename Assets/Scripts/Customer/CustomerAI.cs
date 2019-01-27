@@ -128,7 +128,7 @@ public class CustomerAI : MonoBehaviour
                 if (!_zzzActive)
                 {
                     GameObject go = Instantiate(_zzz, transform.position, transform.rotation);
-                    go.transform.parent = transform.parent;
+                    go.transform.parent = gameObject.transform;
                     _zzzActive = true;
                 }
                     break;
