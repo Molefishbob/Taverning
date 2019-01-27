@@ -99,7 +99,7 @@ public class CustomerAI : MonoBehaviour
                     ResetTimer(_timer1);
                 }
                 if (_annoyanceLevel >= 1) {
-                    _myTable.GetComponent<CounterSeat>().CustomerLeave();
+                    _myTable.transform.GetChild(0).GetComponent<CounterSeat>().CustomerLeave();
                     GameManager.instance.GetSeat(gameObject);
                     _myTable.GetComponent<TableInteraction>()._currentState = TableInteraction.State.Fighting;
                 }
@@ -109,13 +109,13 @@ public class CustomerAI : MonoBehaviour
                 {
                     _drunkessLevel += _drunknessIncrease * _desiredDrink;
                     ResetTimer(_timer1);
-                }
-                if (_drunkessLevel >= 0.5f)
-                {
-                    if (Random.Range(0f, 1f) <= _passOutChange)
+                    if (_drunkessLevel >= 0.5f)
                     {
-                        PassOut();
-                        _currentState = state.PassedOut;
+                        if (Random.Range(0f, 1f) <= _passOutChange)
+                        {
+                            PassOut();
+                            _currentState = state.PassedOut;
+                        }
                     }
                 }
                 break;

@@ -41,13 +41,13 @@ public class BarrelInteraction : GenericInteraction
     // Update is called once per frame
     void Update()
     {
-        if (_actionOnGoing && _liquidPercentage > 0) {
+        if (_actionOnGoing) {
             if (_timer.IsCompleted) {
                 if (_player._hands == PlayerInteraction.hands.Empty || _player._hands != _handEnum) {
-                    _liquidPercentage -= _percentageLossPerDrink;
+                    
                     _player._hands = _handEnum;
                     _actionOnGoing = false;
-            }
+                }
             }
         }
 

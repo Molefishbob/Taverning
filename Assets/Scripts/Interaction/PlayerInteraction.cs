@@ -33,7 +33,7 @@ public class PlayerInteraction : MonoBehaviour
         _anim.SetInteger("Hands", (int)_hands);
         ShootLazer();
         if(iHit) {
-            if (!_doing && Input.GetAxis("Submit") > 0) {
+            if (!_doing) {
                 _hit.transform.gameObject.GetComponent<GenericInteraction>().InteractionStart(this);
                 _doing = true;
             }
