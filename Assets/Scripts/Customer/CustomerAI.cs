@@ -124,7 +124,8 @@ public class CustomerAI : MonoBehaviour
             case state.PassedOut:
                 if (!_zzzActive)
                 {
-                    Instantiate(_zzz, transform.position, transform.rotation);
+                    GameObject go = Instantiate(_zzz, transform.position, transform.rotation);
+                    go.transform.parent = transform.parent;
                     _zzzActive = true;
                 }
                     break;
