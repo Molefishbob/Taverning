@@ -38,9 +38,9 @@ public class CustomerAI : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        _anim.GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
         _timer = GetComponent<Timer>();
         _timer1 = GetComponent<Timer>();
         _desiredDrink = Random.Range(1,4);
@@ -122,7 +122,7 @@ public class CustomerAI : MonoBehaviour
     }
 
     public void MoveToState(Transform trans) {
-        _anim.SetBool("Walking",true);
+        _anim.SetBool(Walking,true);
         _myTable = trans.parent.gameObject;
         _center = trans.position;
         _tm = trans;
