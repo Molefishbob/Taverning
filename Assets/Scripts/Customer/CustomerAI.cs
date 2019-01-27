@@ -13,6 +13,7 @@ public class CustomerAI : MonoBehaviour
 
     public state _currentState;
     const float _defaultValue = 0.15f;
+    private const string Walking = "Walking";
     [Range(0,1)]
     public float _drunkessLevel;
     [Range(0,1)]
@@ -33,11 +34,13 @@ public class CustomerAI : MonoBehaviour
     private bool _moving;
     private bool _passingOut;
     private GameObject _myTable;
+    private Animator _anim;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        _anim.GetComponent<Animator>();
         _timer = GetComponent<Timer>();
         _timer1 = GetComponent<Timer>();
         _desiredDrink = Random.Range(1,4);
@@ -55,6 +58,7 @@ public class CustomerAI : MonoBehaviour
             if (Vector3.Distance(_tm.position,transform.position) <= 0.1f) {
                 transform.position = _tm.position;
                 _moving = false;
+                _anim.SetBool(Walking, false);
                 transform.rotation = _tm.rotation;
             }
 
@@ -111,11 +115,14 @@ public class CustomerAI : MonoBehaviour
     }
 
     public void GiveCorrectAlcohol() {
+        if (_myTable != null) {
         _myTable.GetComponent<CounterSeat>().CustomerLeave();
+        }
         GameManager.instance.GetSeat(gameObject);
     }
 
     public void MoveToState(Transform trans) {
+        _anim.SetBool("Walking",true);
         _myTable = trans.parent.gameObject;
         _center = trans.position;
         _tm = trans;
