@@ -36,6 +36,8 @@ public class CustomerAI : MonoBehaviour
     private GameObject _myTable;
     private Animator _anim;
     public GameObject[] _bubbles;
+    public GameObject _zzz;
+    private bool _zzzActive = false;
 
 
     // Start is called before the first frame update
@@ -120,8 +122,13 @@ public class CustomerAI : MonoBehaviour
                 }
                 break;
             case state.PassedOut:
-                _zzz.SetActive(true);
-                break;
+                if (!_zzzActive)
+                {
+                    Instantiate(_zzz, transform.position, transform.rotation);
+                    _zzzActive = true;
+                }
+                    break;
+
         }
     }
 
@@ -160,23 +167,3 @@ public class CustomerAI : MonoBehaviour
     }
 }
 
-    private Animator _anim;
-    public GameObject[] _bubbles;
-    public GameObject _zzz;
-
-
-    // Start is called before the first frame update
-                if(_currentState == state.Counter)
-                {
-                    if (_desiredDrink == 1)
-                    {
-                        _bubbles[0].gameObject.SetActive(true);
-                    }
-                    else if (_desiredDrink == 2)
-                    {
-                        _bubbles[1].gameObject.SetActive(true);
-                    }
-                    else if (_desiredDrink == 3)
-                    {
-                        _bubbles[2].gameObject.SetActive(true);
-                    }
