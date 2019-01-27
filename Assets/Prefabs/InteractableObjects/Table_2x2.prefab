@@ -523,6 +523,7 @@ MonoBehaviour:
   _currentState: 1
   _chairCount: 4
   _Customers: []
+  _dustCloud: {fileID: 801920781}
 --- !u!70 &5872519587229872547
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
