@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1949a334635acf747af5df1d338f0a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentState: 1
+  _currentState: 0
   _drunkessLevel: 0
   _annoyanceLevel: 0
   _desiredDrink: 0

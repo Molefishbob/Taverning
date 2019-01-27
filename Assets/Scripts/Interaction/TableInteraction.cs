@@ -10,7 +10,8 @@ public class TableInteraction : GenericInteraction
         Empty,
         Full,
         Fighting,
-        PassOut
+        PassOut,
+        Broken
     }
 
     public State _currentState;
@@ -18,6 +19,8 @@ public class TableInteraction : GenericInteraction
     private GameObject[] _Seats;
     private bool[] _SeatTaken;
     public GameObject[] _Customers;
+    public GameObject _dustCloud;
+    private bool _cloudActive;
 
     // Start is called before the first frame update
      public override void Start()
@@ -36,6 +39,12 @@ public class TableInteraction : GenericInteraction
     // Update is called once per frame
     void Update()
     {
+        if (_cloudActive) {
+            if (_timer.IsCompleted) {
+                _dustCloud.SetActive(false);
+                _cloudActive = false;
+            }
+        }
         if (_actionOnGoing && _currentState == State.Fighting)
         {
             if (_timer.IsCompleted)
@@ -78,6 +87,17 @@ public class TableInteraction : GenericInteraction
             }
         }
         return null;
+    }
+
+    public void TableGoBroken() {
+        _dustCloud.SetActive(true);
+        ResetTimer(1f);
+        for (int a = 0 ; a < _Customers.Length;a++) {
+            Destroy(_Customers[a].gameObject);
+            _SeatTaken[a] = false;
+        }
+        _cloudActive = true;
+        _currentState = State.Broken;
     }
 
     public void ReleaseTheChair(Vector3 position)
