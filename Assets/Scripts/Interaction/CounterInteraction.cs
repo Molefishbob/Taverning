@@ -7,11 +7,14 @@ public class CounterInteraction : GenericInteraction
     public CustomerAI _customer;
     public PlayerInteraction _player;
     public CounterSeat _counterSeat;
+    public AudioClip _money;
+    private AudioSource _audio;
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         _counterSeat = transform.parent.gameObject.GetComponent<CounterSeat>();
+        _audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -21,6 +24,7 @@ public class CounterInteraction : GenericInteraction
         {
             if (_timer.IsCompleted && (int)_player._hands == _customer._desiredDrink)
             {
+                _audio.PlayOneShot(_money);
                 _customer._currentState = CustomerAI.state.Table;
                 _player._hands = PlayerInteraction.hands.Empty;
                 _customer.MoveToState(GameManager.instance.GetSeat(_customer.gameObject));

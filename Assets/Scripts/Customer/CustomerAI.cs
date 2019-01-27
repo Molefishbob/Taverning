@@ -39,7 +39,6 @@ public class CustomerAI : MonoBehaviour
     public GameObject _zzz;
     private bool _zzzActive = false;
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -48,6 +47,7 @@ public class CustomerAI : MonoBehaviour
         _timer1 = GetComponent<Timer>();
         _desiredDrink = Random.Range(1,4);
         _passOutChange = _defaultValue * _desiredDrink;
+
     }
 
     // Update is called once per frame

@@ -191,6 +191,7 @@ MonoBehaviour:
   - {fileID: 1365034251618617111}
   - {fileID: 7592503755295734992}
   _zzz: {fileID: 4845802217090576616, guid: d403975d2ca27f442acc5fa46beca23e, type: 3}
+  _money: {fileID: 8300000, guid: c73ca4ac6a22c72408f02e4158a6c442, type: 3}
 --- !u!114 &2950948241881926560
 MonoBehaviour:
   m_ObjectHideFlags: 0
