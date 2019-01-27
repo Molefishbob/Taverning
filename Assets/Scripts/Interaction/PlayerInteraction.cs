@@ -28,7 +28,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         ShootLazer();
         if(iHit) {
-            if (!_doing) {
+            if (!_doing && Input.GetAxis("Submit") > 0) {
                 _hit.transform.gameObject.GetComponent<GenericInteraction>().InteractionStart(this);
                 _doing = true;
             }
