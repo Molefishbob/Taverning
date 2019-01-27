@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _vInputs.x = Input.GetAxis("Horizontal");
         _vInputs.y = Input.GetAxis("Vertical");
+
         if (_vInputs.x != 0 || _vInputs.y != 0)
         {
             _anim.SetBool("Walking", true);
