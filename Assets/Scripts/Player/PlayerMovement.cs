@@ -14,10 +14,12 @@ public class PlayerMovement : MonoBehaviour
     public bool[] _CollidedSides = new bool[4];
     public LayerMask _UnignoredLayersMovement;
     private Animator _anim;
+    private PlayerInteraction _playerInteraction;
 
     private void Awake()
     {
         _anim = gameObject.GetComponent<Animator>();
+        _playerInteraction = gameObject.GetComponent<PlayerInteraction>();
     }
 
     // Start is called before the first frame update
