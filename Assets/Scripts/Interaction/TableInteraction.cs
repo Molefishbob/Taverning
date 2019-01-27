@@ -88,7 +88,7 @@ public class TableInteraction : GenericInteraction
             if(Vector2.Distance(_Seats[i].transform.position, position) <= 0.5f)
             {
                 _SeatTaken[i] = false;
-                if (_currentState = State.Full)
+                if (_currentState == State.Full)
                     _currentState = State.Empty;
             }
         }
