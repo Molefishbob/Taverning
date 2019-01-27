@@ -61,6 +61,9 @@ public class CustomerAI : MonoBehaviour
             if (Vector3.Distance(_tm.position,transform.position) <= 0.1f) {
                 transform.position = _tm.position;
                 _moving = false;
+                if (_annoyanceLevel >= 1) {
+                    _myTable.GetComponent<TableInteraction>().TableGoBroken();
+                }
 
                 if(_currentState == state.Counter)
                 {
@@ -102,8 +105,8 @@ public class CustomerAI : MonoBehaviour
                 }
                 if (_annoyanceLevel >= 1) {
                     _myTable.transform.GetChild(0).GetComponent<CounterSeat>().CustomerLeave();
-                    GameManager.instance.GetSeat(gameObject);
-                    _myTable.GetComponent<TableInteraction>()._currentState = TableInteraction.State.Fighting;
+                    _currentState = state.Table;
+                    MoveToState(GameManager.instance.GetSeat(gameObject));
                 }
                 break;
             case state.Table:
@@ -149,6 +152,9 @@ public class CustomerAI : MonoBehaviour
     public void MoveToState(Transform trans) {
         _anim.SetBool(Walking,true);
         _myTable = trans.parent.gameObject;
+        if (_annoyanceLevel >= 1) {
+            _myTable.GetComponent<TableInteraction>()._currentState = TableInteraction.State.Fighting;
+        }  
 
         foreach (GameObject bubble in _bubbles)
         {

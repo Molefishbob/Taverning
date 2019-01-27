@@ -57,6 +57,10 @@ public class TableInteraction : GenericInteraction
         {
             _currentState = State.Empty;
         }
+        if (_currentState == State.Fighting)
+        {
+            
+        }
     }
 
     public override void InteractionStart(PlayerInteraction player)
@@ -93,7 +97,9 @@ public class TableInteraction : GenericInteraction
         _dustCloud.SetActive(true);
         ResetTimer(1f);
         for (int a = 0 ; a < _Customers.Length;a++) {
-            Destroy(_Customers[a].gameObject);
+            if (_Customers[a] != null) {
+                Destroy(_Customers[a].gameObject);
+            }
             _SeatTaken[a] = false;
         }
         _cloudActive = true;
