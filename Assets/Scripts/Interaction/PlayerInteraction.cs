@@ -16,16 +16,21 @@ public class PlayerInteraction : MonoBehaviour
     public bool iHit;
     RaycastHit2D _hit;
     private bool _doing;
+    private Animator _anim;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        _anim.SetInteger("Hands", (int)_hands);
         ShootLazer();
         if(iHit) {
             if (!_doing && Input.GetAxis("Submit") > 0) {
