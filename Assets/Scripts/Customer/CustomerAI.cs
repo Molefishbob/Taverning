@@ -36,6 +36,8 @@ public class CustomerAI : MonoBehaviour
     private GameObject _myTable;
     private Animator _anim;
     public GameObject[] _bubbles;
+    public GameObject _zzz;
+    private bool _zzzActive = false;
 
 
     // Start is called before the first frame update
@@ -123,8 +125,13 @@ public class CustomerAI : MonoBehaviour
                 }
                 break;
             case state.PassedOut:
-                /// TODO: ANIMATE PASSING OUT
-                break;
+                if (!_zzzActive)
+                {
+                    Instantiate(_zzz, transform.position, transform.rotation);
+                    _zzzActive = true;
+                }
+                    break;
+
         }
     }
 
@@ -165,3 +172,4 @@ public class CustomerAI : MonoBehaviour
         timer.StartTimer();
     }
 }
+

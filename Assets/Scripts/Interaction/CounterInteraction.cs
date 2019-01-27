@@ -39,6 +39,7 @@ public class CounterInteraction : GenericInteraction
 
     public override void InteractionInterrupt(PlayerInteraction player)
     {
+        _actionOnGoing = false;
         _timer.Stop();
     }
 }
