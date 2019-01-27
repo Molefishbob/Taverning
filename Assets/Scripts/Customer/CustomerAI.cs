@@ -77,6 +77,7 @@ public class CustomerAI : MonoBehaviour
                     ResetTimer(_timer1);
                 }
                 if (_annoyanceLevel >= 1) {
+                    GameManager.instance.GetSeat(gameObject);
                     _myTable.GetComponent<TableInteraction>()._currentState = TableInteraction.State.Fighting;
                 }
                 break;
