@@ -35,7 +35,8 @@ public class CustomerAI : MonoBehaviour
     private bool _passingOut;
     private GameObject _myTable;
     private Animator _anim;
-    
+    public GameObject[] _bubbles;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -58,6 +59,23 @@ public class CustomerAI : MonoBehaviour
             if (Vector3.Distance(_tm.position,transform.position) <= 0.1f) {
                 transform.position = _tm.position;
                 _moving = false;
+
+                if(_currentState == state.Counter)
+                {
+                    if (_desiredDrink == 1)
+                    {
+                        _bubbles[0].gameObject.SetActive(true);
+                    }
+                    else if (_desiredDrink == 2)
+                    {
+                        _bubbles[0].gameObject.SetActive(true);
+                    }
+                    else if (_desiredDrink == 3)
+                    {
+                        _bubbles[0].gameObject.SetActive(true);
+                    }
+                }
+
                 _anim.SetBool(Walking, false);
                 transform.rotation = _tm.rotation;
             }
@@ -124,6 +142,12 @@ public class CustomerAI : MonoBehaviour
     public void MoveToState(Transform trans) {
         _anim.SetBool(Walking,true);
         _myTable = trans.parent.gameObject;
+
+        foreach (GameObject bubble in _bubbles)
+        {
+            bubble.SetActive(false);
+        }
+
         _center = trans.position;
         _tm = trans;
         _moving = true;
