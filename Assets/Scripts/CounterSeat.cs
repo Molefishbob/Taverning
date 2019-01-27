@@ -34,6 +34,7 @@ public class CounterSeat : MonoBehaviour
 
         if (_customer == null) {
             _customer = customer;
+            _counterInteraction._customer = customer;
             _coll.enabled = true;
             return true;
         } else {
@@ -43,6 +44,7 @@ public class CounterSeat : MonoBehaviour
 
     public void CustomerLeave() {
         _customer = null;
+        _counterInteraction._customer = null;
         _coll.enabled = false;
     }
 }
