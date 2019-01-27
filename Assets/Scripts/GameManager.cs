@@ -8,8 +8,11 @@ public class GameManager : MonoBehaviour
     public float _Gold;
     public GameObject[] _Tables = new GameObject[4];
     public GameObject[] _CustomersToSpawn = new GameObject[5];
+    public GameObject _SpawnPoint;
     public List<GameObject> _SpawnedCustomers;
     public bool paused = false;
+    public float _SpawnTimer = 1;
+    private float _Timer = 0;
     
     private void Awake()
     {
@@ -29,13 +32,24 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!paused)
+        {
+            _Timer += Time.deltaTime;
+            if (_Timer >= _SpawnTimer)
+            {
+                _Timer = 0;
+                SpawnCustomer();
+            }
+        }
     }
 
     void SpawnCustomer()
     {
         int CustomerNumber = Random.Range(0, 5);
-        _SpawnedCustomers.Add(Instantiate(_CustomersToSpawn[CustomerNumber]));
+        GameObject _JustSpawned = Instantiate(_CustomersToSpawn[CustomerNumber]);
+        _JustSpawned.transform.position = _SpawnPoint.transform.position;
+        _JustSpawned.GetComponent<CustomerAI>().MoveToState(GetSeat(_JustSpawned));
+        _SpawnedCustomers.Add(_JustSpawned);
     }
     void DespawnCustomer(GameObject customer)
     {
