@@ -76,6 +76,9 @@ public class CustomerAI : MonoBehaviour
                     _annoyanceLevel += _annoyanceIncrease;
                     ResetTimer(_timer1);
                 }
+                if (_annoyanceLevel >= 1) {
+                    _myTable.GetComponent<TableInteraction>()._currentState = TableInteraction.State.Fighting;
+                }
                 break;
             case state.Table:
                 if (_timer1.IsCompleted)
