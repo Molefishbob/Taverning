@@ -105,7 +105,9 @@ public class CustomerAI : MonoBehaviour
 
     public void PassOut() {
         _passingOut = true;
-        _myTable.GetComponent<TableInteraction>().IHaveFallenAndCantGetUp();
+        if (_myTable != null) {
+            _myTable.GetComponent<TableInteraction>().IHaveFallenAndCantGetUp();
+        }
     }
 
     public void GiveCorrectAlcohol() {
